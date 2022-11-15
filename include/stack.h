@@ -28,6 +28,23 @@ public:
 		pMem.push_back(value);
 	}
 
+	bool operator==(const Stack& stack) const
+	{
+		if (pMem == stack.pMem)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	bool operator!=(const Stack& stack)
+	{
+		return !(*this == stack);
+	}
+
 	Stack& operator=(const Stack& stack)
 	{
 		if (this == &stack)
@@ -58,5 +75,10 @@ public:
 		{
 			return false;
 		}
+	}
+
+	int getsize()
+	{
+		return pMem.getsize();
 	}
 };

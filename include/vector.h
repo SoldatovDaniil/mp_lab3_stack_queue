@@ -1,4 +1,3 @@
-#pragma once
 #include <initializer_list>
 #include <iostream>
 
@@ -45,20 +44,6 @@ public:
 		{
 			data[ind] = *i;
 			ind++;
-		}
-	}
-
-	Vector(Vector&& v) noexcept
-	{
-		if (this != &v)
-		{
-			delete[] data;
-			size = v.size;
-			copacity = v.copacity; 
-			data = v.data; 
-			v.data = nullptr;
-			v.size = 0;
-			v.copacity = 0;
 		}
 	}
 
@@ -122,21 +107,6 @@ public:
 		return *this;
 	}
 
-	Vector& operator=(Vector&& v) 
-	{
-		if (this == &v) {
-			return *this;
-		}
-		delete[] data;
-		data = v.data;
-		copacity = v.copacity;
-		size = v.size;
-		v.data = nullptr;
-		v.copacity = 0;
-		v.size = 0;
-		return *this;
-	}
-
 	bool operator==(const Vector<T>& v) const
 	{
 		if (this == &v)
@@ -165,6 +135,7 @@ public:
 	{
 		return !(*this == v);
 	}
+
 	void push_back(T value)
 	{
 		if (copacity < size + 1)
@@ -224,9 +195,9 @@ public:
 
 	T& operator[](int i)
 	{
-		if ((i = > size) || (i < 0))
+		if ((i >= size) || (i < 0))
 		{
-			throw ("index out of range")
+			throw ("index out of range");
 		}
 		return data[i];
 	}
@@ -253,6 +224,7 @@ public:
 		out << "]";
 		return out;
 	}
+
 	friend istream& operator>>(istream& in, Vector& v) {
 		for (int count = 0; count < size; count++) {
 			cout << "[" << count << "] = "; in >> data[count];
