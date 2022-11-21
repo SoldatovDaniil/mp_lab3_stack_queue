@@ -7,13 +7,13 @@ TEST(Queque, can_make_queue)
 	ASSERT_NO_THROW(Queque<int> q1);
 }
 
-TEST(Queque, can_copy_queue) 
+TEST(Queque, can_copy_queque) 
 {
 	Queque<int> q1;
 	ASSERT_NO_THROW(Queque<int> q2(q1));
 }
 
-TEST(Queque, get_size_work_correctly) 
+TEST(Queque, can_get_size_work_correctly) 
 {
 	Queque<int> q1;
 	for (int i = 0; i < 5; i++)
@@ -50,19 +50,17 @@ TEST(Queque, can_push_correctly)
 	EXPECT_EQ(q1.top(), 2);
 }
 
-TEST(Queque, can_copy_queue_correctly) 
+TEST(Queque, can_copy_queuqe_correctly) 
 {
 	Queque<int> q1;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		q1.push(i);
 	}
 	Queque<int> q2(q1);
-	for (int i = 0; i < 3; i++)
-	{
-		q1.pop();
-		q2.pop();
-		EXPECT_EQ(q1.getsize(), q2.getsize());
-		EXPECT_EQ(q1.top(), q2.top());
-	}
+	EXPECT_EQ(q2.top(), q1.top());
+	EXPECT_EQ(q1.getsize(), q2.getsize());
+
+	q1.pop(), q2.pop();
+	EXPECT_EQ(q2.top(), q1.top());
 }

@@ -24,7 +24,7 @@ TEST(Stack, can_copy_stack_correctly)
 	EXPECT_EQ(s1, s2);
 }
 
-TEST(Stack, top_work_correctly)
+TEST(Stack, can_top_work_correctly)
 {
 	Stack<int> s1; 
 	for (int i = 0; i < 15; i++)
