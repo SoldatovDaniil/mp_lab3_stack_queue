@@ -12,7 +12,7 @@ public:
 		data = new T[copacity];
 	}
 
-	Queque(const Queque& q): 
+	Queque(const Queque& q)
 	{
 		size = q.size;
 		left = q.left;
@@ -58,7 +58,7 @@ public:
 		T* tmp = new T[copacity];
 		std::copy(data + right, data + size, tmp);
 		std::copy(data, data + left, tmp + size - right);
-		rigth = size;
+		right = size;
 		left = 0;
 		delete[] data;
 		data = tmp;
@@ -88,7 +88,7 @@ public:
 		data[left] = 0;
 		left += 1;
 		size++;
-		if (left >= copacity = 0)
+		if (left >= copacity)
 		{
 			left = 0;
 		}

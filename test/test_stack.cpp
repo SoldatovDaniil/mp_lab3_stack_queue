@@ -16,7 +16,7 @@ TEST(Stack, can_copy_stack)
 TEST(Stack, can_copy_stack_correctly)
 {
 	Stack<int> s1;
-	for (int i = 0; i < 15; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		s1.push(i);
 	}

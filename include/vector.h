@@ -6,9 +6,9 @@ using namespace std;
 template <class T>
 class Vector
 {
-	T* data{ nullptr };
-	int size{ 0 };
-	int copacity{ 0 };
+	T* data = nullptr;
+	int size = 0 ;
+	int copacity = 0;
 
 public:
 	Vector()
@@ -57,24 +57,22 @@ public:
 
 	void resize(int newSize)
 	{
-		if (size >= newSize)
+		if (copacity >= newSize)
 		{
 			size = newSize;
 		}
 		else
 		{
-			copacity = 2 * newSize;
+			copacity = 2 * (newSize + 1);
 		}
-
-		T* newData = new T[copacity];
-		for (int i = 0; i < newSize; i++)
+		T* tmp = new T[copacity];
+		for (int i = 0; i < size; i++)
 		{
-			newData[i] = data[i];
+			tmp[i] = data[i];
 		}
-
-		delete[] data;
-		data = newData;
 		size = newSize;
+		delete[] data;
+		data = tmp;
 	}
 
 	Vector& operator=(const initializer_list<T>& initList)
