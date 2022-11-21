@@ -149,7 +149,7 @@ public:
 
 	T pop_back()
 	{
-		if (size() == 0)
+		if (size == 0)
 			throw ("Vector is empty");
 		T tmp = data[size - 1];
 		size--;
@@ -180,8 +180,10 @@ public:
 
 	T erase(int pos)
 	{
-		if (index > size)
-			throw "index is out of range";
+		if (pos > size)
+		{
+			throw ("index is out of range");
+		}
 		T tmp = data[pos];
 		for (int i = pos + 1; i < size; i++)
 		{
@@ -207,9 +209,9 @@ public:
 
 	T operator[](int i) const
 	{
-		if ((i = > size) || (i < 0))
+		if ((i => size) || (i < 0))
 		{
-			throw ("index out of range")
+			throw ("index out of range");
 		}
 		return data[i];
 	}
@@ -224,8 +226,8 @@ public:
 	}
 
 	friend istream& operator>>(istream& in, Vector& v) {
-		for (int count = 0; count < size; count++) {
-			cout << "[" << count << "] = "; in >> data[count];
+		for (int count = 0; count < v.size; count++) {
+			cout << "[" << count << "] = "; in >> v.data[count];
 		}
 		return in;
 	}
