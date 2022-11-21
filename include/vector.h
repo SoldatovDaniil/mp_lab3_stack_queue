@@ -209,7 +209,7 @@ public:
 
 	T operator[](int i) const
 	{
-		if ((i => size) || (i < 0))
+		if ((i >= size) || (i < 0))
 		{
 			throw ("index out of range");
 		}
